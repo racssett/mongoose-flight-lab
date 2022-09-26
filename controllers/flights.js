@@ -7,9 +7,11 @@ function newFlight (req, res) {
 }
 
 function create (req, res) {
+  console.log("THIS IS REQ BODY", req.body);
   Flight.create(req.body)
   .then(flight => {
-    res.redirect(`/flights/new`)
+    console.log("THIS IS THE FLIGHT", flight);
+    res.redirect(`/flights`)
   })
   .catch(err => {
     res.redirect('/flights/new')
