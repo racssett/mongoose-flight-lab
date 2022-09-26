@@ -28,7 +28,7 @@ function index (req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/movies/new')
+    res.redirect('/flights/new')
   })
 }
 
@@ -43,7 +43,18 @@ function show (req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/movies/new')
+    res.redirect('/flights')
+  })
+}
+
+function deleteFlight (req, res) {
+  Flight.findByIdAndDelete(req.params.id)
+  .then(flight => {
+    res.redirect('/flights')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
   })
 }
 
@@ -52,4 +63,5 @@ export {
   create,
   index,
   show,
+  deleteFlight as delete,
 }
