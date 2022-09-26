@@ -3,12 +3,19 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 const flightSchema = new Schema({
-  airline: String,
+  airline: {
+    type: String,
+    enum: ['Southwest', 'American', 'United', 'Delta']
+  },
   airport: {
     type: String,
     default:"DEN",
   },
-  flightNo: Number,
+  flightNo: {
+    type: Number,
+    min: 10,
+    max: 9999,
+  },
   departs: {
     type: Date,
   }, 

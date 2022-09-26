@@ -32,8 +32,24 @@ function index (req, res) {
   })
 }
 
+function show (req, res) {
+  console.log("THIS IS THE REQUEST PARAMETER ID", req.params.id);
+  Flight.findById(req.params.id)
+  .then(flight => {
+    res.render('flights/show', {
+      title: 'Flight Details',
+      flight: flight
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/movies/new')
+  })
+}
+
 export {
   newFlight as new,
   create,
   index,
+  show,
 }
