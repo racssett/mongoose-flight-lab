@@ -30,22 +30,12 @@ const flightSchema = new Schema({
   departs: {
     type: Date,
   }, 
-  tickets: [ticketSchema]
+  tickets: [ticketSchema],
+  meals: [{type: Schema.Types.ObjectId, ref: 'Meal'}],
 },
   {
     timestamps: true
 })
-
-
-
-// function oneYearFromNow(){
-//   const today = new Date()
-//   console.log("Today", today.getFullYear()+1)
-//   today.setFullYear(today.getFullYear()+1)
-//   console.log(today);
-//   return today
-// }
-// oneYearFromNow()
 
 const Flight = mongoose.model('Flight', flightSchema)
 
